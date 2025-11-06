@@ -49,20 +49,19 @@ struct Movie: Identifiable, Codable {
     let genreIds: [Int]
     
     
- 
-    
     enum codingKeys: String, CodingKey{
         case id
         case title
         case overview
         
+        case originalTitle = "original_title"
         case releaseDate = "release_date"
         case posterPath = "poster_path"
         case backdropPath = "backdrop_path"
         case voteAverage = "vote_average"
         case voteCount = "vote_count"
         case genreIDS = "genre_ids"
-        case originalTitle = "original_title"
+        
     }
     
 
