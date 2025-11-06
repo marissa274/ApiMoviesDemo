@@ -35,6 +35,26 @@ import Foundation
 //      "vote_count": 1886
 //    }
 
-struct Movie {
+struct Movie: Identifiable {
+    
+    let id: Int
+    let title: String
+    let originalTitle: String
+    let overview: String
+    let releaseDate: String
+    let backdropPath:String
+    let posterPath: String
+    let voteAverage: Double
+    let voteCount: Int
+    let genreIds: [Int]
+    
+    
+    var posterURL : URL?{
+        return URL (string: "https://image.tmdb.org/t/p/w500\(posterPath)")
+            
+    
+        
+    }
+    
 
 }
