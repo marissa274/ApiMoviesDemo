@@ -49,12 +49,28 @@ struct Movie: Identifiable, Codable {
     let genreIds: [Int]
     
     
-    var posterURL : URL?{
-        return URL (string: "https://image.tmdb.org/t/p/w500\(posterPath)")
-            
+ 
     
+    enum codingKeys: String, CodingKey{
+        case id
+        case title
+        case overview
         
+        case releaseDate = "release_date"
+        case posterPath = "poster_path"
+        case backdropPath = "backdrop_path"
+        case voteAverage = "vote_average"
+        case voteCount = "vote_count"
+        case genreIDS = "genre_ids"
+        case originalTitle = "original_title"
     }
     
 
+}
+
+extension Movie{
+    var posterURL : URL?{
+        return URL (string: "https://image.tmdb.org/t/p/w500\(posterPath)")
+            
+   }
 }
