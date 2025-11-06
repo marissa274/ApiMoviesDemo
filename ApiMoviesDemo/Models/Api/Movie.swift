@@ -35,7 +35,7 @@ import Foundation
 //      "vote_count": 1886
 //    }
 
-struct Movie: Identifiable {
+struct Movie: Identifiable, Codable {
     
     let id: Int
     let title: String
