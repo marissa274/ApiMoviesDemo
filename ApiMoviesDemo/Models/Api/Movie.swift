@@ -36,31 +36,29 @@ import Foundation
 //    }
 
 struct Movie: Identifiable, Codable {
-    
     let id: Int
     let title: String
     let originalTitle: String
     let overview: String
     let releaseDate: String
-    let backdropPath:String
-    let posterPath: String
+    let backdropPath:String?
+    let posterPath: String?
     let voteAverage: Double
     let voteCount: Int
     let genreIds: [Int]
     
     
-    enum codingKeys: String, CodingKey{
+    enum CodingKeys: String, CodingKey{
         case id
         case title
         case overview
-        
         case originalTitle = "original_title"
         case releaseDate = "release_date"
         case posterPath = "poster_path"
         case backdropPath = "backdrop_path"
         case voteAverage = "vote_average"
         case voteCount = "vote_count"
-        case genreIDS = "genre_ids"
+        case genreIds = "genre_ids"
         
     }
     
@@ -69,7 +67,8 @@ struct Movie: Identifiable, Codable {
 
 extension Movie{
     var posterURL : URL?{
-        return URL (string: "https://image.tmdb.org/t/p/w500\(posterPath)")
+        guard let path =  posterPath else {return nil}
+        return URL (string: "https://image.tmdb.org/t/p/w500\(path)")
             
    }
 }
