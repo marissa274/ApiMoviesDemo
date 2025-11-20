@@ -14,7 +14,7 @@ class MovieService{
 
     }
     
-    func fetchPopularMoivie()  async throws -> [Movie]{
+    func fetchPopularMovies()  async throws -> [Movie]{
         let urlAsString = "\(baseUrl)/movie/popular?api_key=\(apiKey)&language=en-US&page=1"
         return try await fetchMovies(urlAsString: urlAsString)
         

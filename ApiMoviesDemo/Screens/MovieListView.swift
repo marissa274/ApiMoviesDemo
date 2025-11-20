@@ -1,34 +1,49 @@
 import SwiftUI
 
 struct MovieListView: View {
-    @State private var movies = MockData.movies
-    @State private var searchText = ""
-    
-    private var movieSevice = MovieService()
+ @StateObject private var viewModel = MovieListViewModel()
         
     var body: some View {
         NavigationView {
             List {
-                ForEach($movies) { $movie in
+                ForEach($viewModel.movies) { $movie in
                     NavigationLink(destination: MovieDetailView(movie: movie)) {
                         MovieRow(movie: $movie)
                     }
                 }
             }
             .navigationTitle("Films")
-            .searchable(text: $searchText, placement:  .navigationBarDrawer(displayMode: .automatic), prompt: "Rechercher des films")
+            .searchable(text: $viewModel.searchText, placement:  .navigationBarDrawer(displayMode: .automatic), prompt: "Rechercher des films")
             .onSubmit(of: .search) {
                 Task{
-                    movies =  try! await movieSevice.searchMovies(query: searchText)
+                    await viewModel.seachMovies()
                     
+                }
+            }
+            .overlay{
+                if let errorMessage =
+                    viewModel.errorMessage{
+                    HStack{
+                        Text(errorMessage)
+                    }
+                    
+                }
+                
+                if viewModel.isLoading{
+                    HStack{
+                        ProgressView()
+                        Text("chargement des movies")
+                    }
+                    
+                   
                 }
             }
             
             .refreshable {
-                movies =  try! await movieSevice.fetchPopularMoivie()
+               await viewModel.fetchPopularMovies()
             }
             .task {
-                movies =  try! await movieSevice.fetchPopularMoivie()
+                await viewModel.fetchPopularMovies()
             }
           
         }
