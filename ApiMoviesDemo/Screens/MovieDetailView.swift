@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct MovieDetailView: View {
-    var movie: Movie
+    var movie: MovieEntity
 
     var body: some View {
         ScrollView {
@@ -46,5 +46,5 @@ struct MovieDetailView: View {
 }
 
 #Preview {
-    MovieDetailView(movie: MockData.movies.first!)
+    MovieDetailView(movie: MockData.moviesEntities.first!)
 }

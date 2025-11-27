@@ -1,4 +1,57 @@
 struct MockData {
+   static let moviesEntities: [MovieEntity] = [
+        MovieEntity(
+            id: 1,
+            title: "Inception",
+            overview: "Un voleur spécialisé dans l'extraction de secrets à travers les rêves doit accomplir l'impossible : l'implantation d'une idée.",
+            releaseDate: "2010-07-16",
+            backdropPath: "/s3TBrRGB1iav7gFOCNx3H31MoES.jpg",
+            posterPath: "/qmDpIHrmpJINaRKAfWQfftjCdyi.jpg",
+            voteAverage: 8.8,
+            voteCount: 34000
+        ),
+        MovieEntity(
+            id: 2,
+            title: "Interstellar",
+            overview: "Un groupe d'explorateurs voyage à travers un trou de ver pour sauver l'humanité.",
+            releaseDate: "2014-11-07",
+            backdropPath: "/rAiYTfKGqDCRIIqo664sY9XZIvQ.jpg",
+            posterPath: "/gEU2QniE6E77NI6lCU6MxlNBvIx.jpg",
+            voteAverage: 8.6,
+            voteCount: 32000
+        ),
+        MovieEntity(
+            id: 3,
+            title: "Avatar",
+            overview: "Un ancien marine est envoyé sur Pandora où il découvre un monde fascinant et dangereux.",
+            releaseDate: "2009-12-18",
+            backdropPath: "/amYkOxCwHiVTFKendcIW0rSrRlU.jpg",
+            posterPath: "/jRXYjXNq0Cs2TcJjLkki24mlbLF.jpg",
+            voteAverage: 7.8,
+            voteCount: 29000
+        ),
+        MovieEntity(
+            id: 4,
+            title: "Spider-Man: No Way Home",
+            overview: "Peter Parker demande à Doctor Strange de l’aider, mais un sort qui tourne mal ouvre le multivers.",
+            releaseDate: "2021-12-17",
+            backdropPath: "/1Rr5SrvHxMXHu5RjKpaMba8VTzi.jpg",
+            posterPath: "/5weKu49pzJCt06OPpjvT80efnQj.jpg",
+            voteAverage: 8.2,
+            voteCount: 18000
+        ),
+        MovieEntity(
+            id: 5,
+            title: "Black Panther",
+            overview: "T'Challa retourne au Wakanda pour devenir roi, mais une menace met son pays en danger.",
+            releaseDate: "2018-02-16",
+            backdropPath: "/6ELCZlTA5lGUops70hKdB83WJxH.jpg",
+            posterPath: "/uxzzxijgPIY7slzFvMotPv8wjKA.jpg",
+            voteAverage: 7.4,
+            voteCount: 15000
+        )
+    ]
+
     static let movies: [Movie] = [
             Movie(
                 id: 1,

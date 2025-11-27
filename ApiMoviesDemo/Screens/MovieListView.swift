@@ -1,6 +1,8 @@
 import SwiftUI
+import SwiftData
 
 struct MovieListView: View {
+    @Environment(\.modelContext) var modelContext
  @StateObject private var viewModel = MovieListViewModel()
         
     var body: some View {
@@ -40,9 +42,10 @@ struct MovieListView: View {
             }
             
             .refreshable {
-               await viewModel.fetchPopularMovies()
+               await viewModel.refresh()
             }
             .task {
+                viewModel.setContextNeaded(modelContext)
                 await viewModel.fetchPopularMovies()
             }
           
@@ -50,7 +53,15 @@ struct MovieListView: View {
     }
 
 }
+enum PreviewData{
+    static var container: ModelContainer = {
+        let config = ModelConfiguration(isStoredInMemoryOnly: true)
+        return try! ModelContainer(for: MovieEntity.self, configurations: config)
+     }()
+    }
+
 
 #Preview {
     MovieListView()
+        .modelContainer(PreviewData.container)
 }

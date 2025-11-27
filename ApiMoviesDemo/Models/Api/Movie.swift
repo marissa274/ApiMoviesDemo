@@ -65,10 +65,10 @@ struct Movie: Identifiable, Codable {
 
 }
 
-extension Movie{
-    var posterURL : URL?{
-        guard let path =  posterPath else {return nil}
-        return URL (string: "https://image.tmdb.org/t/p/w500\(path)")
-            
-   }
-}
+//extension Movie{
+//    var posterURL : URL?{
+//        guard let path =  posterPath else {return nil}
+//        return URL (string: "https://image.tmdb.org/t/p/w500\(path)")
+//            
+//   }
+//}

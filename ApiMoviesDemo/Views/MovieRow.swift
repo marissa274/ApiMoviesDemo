@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct MovieRow: View {
-    @Binding var movie: Movie
+    @Binding var movie: MovieEntity
 
     var body: some View {
         HStack(spacing: 12) {
